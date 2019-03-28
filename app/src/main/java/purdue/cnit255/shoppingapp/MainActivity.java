@@ -1,15 +1,16 @@
 package purdue.cnit255.shoppingapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_product:
-                    mTextMessage.setText(R.string.title_product);
+                    pushFragment(new ProductFragment());
                     return true;
                 case R.id.navigation_user:
-                    mTextMessage.setText(R.string.title_user);
+                    pushFragment(new UserFragment());
                     return true;
                 case R.id.navigation_cart:
-                    mTextMessage.setText(R.string.title_cart);
+                    pushFragment(new CartFragment());
                     return true;
             }
             return false;
@@ -36,9 +37,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Select first menu item by default and show Fragment accordingly.
+        Menu menu = navigation.getMenu();
+        pushFragment(new ProductFragment());
+
     }
+
+    /**
+     * Method to push any fragment into given id.
+     *
+     * @param fragment An instance of Fragment to show into the given id.
+     */
+    protected void pushFragment(Fragment fragment) {
+        if (fragment == null)
+            return;
+
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager != null) {
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            if (ft != null) {
+                ft.replace(R.id.rootLayout, fragment);
+                ft.commit();
+            }
+        }
+    }
+
 
 }
