@@ -1,4 +1,4 @@
-package purdue.cnit255.shoppingapp;
+package purdue.cnit255.shoppingapp.User;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,15 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ProductFragment extends Fragment {
+import purdue.cnit255.shoppingapp.DataStorage;
+import purdue.cnit255.shoppingapp.R;
+
+public class AddCustomer extends Fragment {
     DataStorage storage;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.product_fragment, container, false);
+        return inflater.inflate(R.layout.add_customer, container, false);
     }
 
-    // After the view is created, initialize buttons and what not here
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         storage = new DataStorage(getActivity().getApplicationContext());

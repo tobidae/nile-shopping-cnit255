@@ -1,11 +1,10 @@
 package purdue.cnit255.shoppingapp;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,15 +54,10 @@ public class MainActivity extends AppCompatActivity {
     protected void pushFragment(Fragment fragment) {
         if (fragment == null)
             return;
-
-        FragmentManager fragmentManager = getFragmentManager();
-        if (fragmentManager != null) {
-            FragmentTransaction ft = fragmentManager.beginTransaction();
-            if (ft != null) {
-                ft.replace(R.id.rootLayout, fragment);
-                ft.commit();
-            }
-        }
+        FragmentTransaction fTransaction = this.getSupportFragmentManager().beginTransaction();
+        fTransaction.replace(R.id.rootLayout, fragment);
+        fTransaction.addToBackStack(null);
+        fTransaction.commit();
     }
 
 
