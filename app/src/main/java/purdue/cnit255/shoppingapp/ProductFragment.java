@@ -8,10 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ProductFragment extends Fragment {
-    DataStorage storage = new DataStorage(getActivity().getApplicationContext());
+    DataStorage storage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        storage = new DataStorage(getActivity().getApplicationContext());
         return inflater.inflate(R.layout.product_fragment, container, false);
     }
 }

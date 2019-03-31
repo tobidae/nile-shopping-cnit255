@@ -8,10 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class CartFragment extends Fragment {
-    DataStorage storage = new DataStorage(getActivity().getApplicationContext());
+    DataStorage storage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        storage = new DataStorage(getActivity().getApplicationContext());
         return inflater.inflate(R.layout.cart_fragment, container, false);
     }
 }
