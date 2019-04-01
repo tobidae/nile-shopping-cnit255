@@ -1,26 +1,23 @@
 package purdue.cnit255.shoppingapp.Helpers;
 
+import java.util.UUID;
+
 public class User {
     private String id;
     private String firstName;
     private String lastName;
-    private int phoneNumber;
+    private long phoneNumber;
     private String email;
-    private String address;
+    private Address address;
 
     public User(String firstName, String lastName) {
+        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User(String id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String id, String firstName, String lastName, int phoneNumber, String email, String address) {
-        this.id = id;
+    public User(String firstName, String lastName, long phoneNumber, String email, Address address) {
+        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -52,11 +49,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -68,11 +65,11 @@ public class User {
         this.email = email;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }

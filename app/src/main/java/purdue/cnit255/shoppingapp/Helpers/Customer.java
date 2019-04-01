@@ -9,12 +9,8 @@ public class Customer extends User {
         super(firstName, lastName);
     }
 
-    public Customer(String id, String firstName, String lastName) {
-        super(id, firstName, lastName);
-    }
-
-    public Customer(String id, String firstName, String lastName, int phoneNumber, String email, String address) {
-        super(id, firstName, lastName, phoneNumber, email, address);
+    public Customer(String firstName, String lastName, long phoneNumber, String email, Address address) {
+        super(firstName, lastName, phoneNumber, email, address);
     }
 
     public Card getPaymentCard() {
