@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Customer"
+        android:textSize="24dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/addCustomerFirstName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="First Name"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/addCustomerLastName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Last Name"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/addCustomerPhoneNo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+        <EditText
+            android:id="@+id/addCustomerEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/addCustomerAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Home Address"
+            android:inputType="textPostalAddress" />
+        <EditText
+            android:id="@+id/addCustomerCity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="City"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/addCustomerState"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="State"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/addCustomerZipCode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:hint="Zip Code"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnAddCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Customer"/>
+    </LinearLayout>
 </LinearLayout>
