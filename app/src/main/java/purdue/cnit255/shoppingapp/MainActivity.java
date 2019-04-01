@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import purdue.cnit255.shoppingapp.User.CustomerFragment;
+import purdue.cnit255.shoppingapp.User.SellerFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -21,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_product:
                     pushFragment(new ProductFragment());
                     return true;
-                case R.id.navigation_user:
-                    pushFragment(new UserFragment());
+                case R.id.navigation_customer:
+                    pushFragment(new CustomerFragment());
+                    return true;
+                case R.id.navigation_seller:
+                    pushFragment(new SellerFragment());
                     return true;
                 case R.id.navigation_cart:
                     pushFragment(new CartFragment());
