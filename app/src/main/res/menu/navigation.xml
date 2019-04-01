@@ -7,9 +7,13 @@
         android:title="@string/title_product" />
 
     <item
-        android:id="@+id/navigation_user"
+        android:id="@+id/navigation_customer"
         android:icon="@drawable/ic_face"
-        android:title="@string/title_user" />
+        android:title="@string/title_customers" />
+    <item
+        android:id="@+id/navigation_seller"
+        android:icon="@drawable/ic_face"
+        android:title="@string/title_sellers" />
 
     <item
         android:id="@+id/navigation_cart"

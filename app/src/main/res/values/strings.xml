@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Shopping App</string>
     <string name="title_product">Product List</string>
-    <string name="title_user">User List</string>
+    <string name="title_customers">Customers</string>
+    <string name="title_sellers">Sellers</string>
     <string name="title_cart">Cart List</string>
 </resources>
