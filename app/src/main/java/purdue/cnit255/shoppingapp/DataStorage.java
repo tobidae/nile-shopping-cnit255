@@ -53,18 +53,16 @@ public class DataStorage {
     }
 
     public static void setObject(String key, Object value) {
-        SharedPreferences appSharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(context.getApplicationContext());
-        SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = prefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(value);
         prefsEditor.putString(key, json);
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 
     public static String getObject(String key) {
-        Gson gson = new Gson();
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return prefs.getString(key, "");
     }
 }
