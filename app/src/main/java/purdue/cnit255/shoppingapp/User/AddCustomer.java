@@ -3,11 +3,13 @@ package purdue.cnit255.shoppingapp.User;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -64,12 +66,13 @@ public class AddCustomer extends Fragment {
                 Customer customer = new Customer(fName, lName, phoneNo, email, address);
 
                 // Get the type of object to retrieve
-                Type type = new TypeToken<ArrayList<Customer>>(){}.getType();
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Customer>>(){}.getType();
                 // Pass in the storage key
                 String json = storage.getObject(CUSTOMER_KEY);
-                Gson gson = new Gson();
                 // Get list of customers from json and convert to type list
                 ArrayList<Customer> customers = gson.fromJson(json, type);
+                Toast.makeText(getActivity(), json, Toast.LENGTH_LONG).show();
 
                 // Init the arraylist if it does not exist
                 if (customers == null) {

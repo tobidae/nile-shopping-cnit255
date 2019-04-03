@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Customer"
-        android:textSize="24dp"
-        />
+        android:textSize="24dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
