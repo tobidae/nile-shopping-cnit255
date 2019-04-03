@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtCustomerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customers"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_marginBottom="10dp"/>
+
+    <ListView
+        android:id="@+id/listCustomer"
+        android:layout_below="@+id/txtCustomerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+    </ListView>
 
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/customer_fab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingRight="10dp"
-        android:paddingBottom="65dp"
+        android:layout_marginBottom="60dp"
         android:paddingLeft="10dp"
         android:src="@drawable/ic_add_user"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_singleLine="true"
         fab:menu_backgroundColor="#ccffffff"
         fab:fab_label="Customer" />
-</LinearLayout>
+</RelativeLayout>

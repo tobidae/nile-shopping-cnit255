@@ -6,14 +6,22 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import purdue.cnit255.shoppingapp.DataStorage;
+import purdue.cnit255.shoppingapp.Helpers.Customer;
 import purdue.cnit255.shoppingapp.R;
 
 public class CustomerFragment extends Fragment {
     DataStorage storage;
+    String CUSTOMER_KEY = "customers";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         return inflater.inflate(R.layout.customer_fragment, viewGroup, false);
@@ -22,8 +30,23 @@ public class CustomerFragment extends Fragment {
     // After the view is created, initialize buttons and what not here
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        storage = new DataStorage(getActivity().getApplicationContext());
+        storage = new DataStorage(getActivity());
         FloatingActionButton customerFab = view.findViewById(R.id.customer_fab);
+
+        // Get the type of object to retrieve, pass in the storage key to get object
+        // Then get list of customers from json and convert to type arraylist
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Customer>>(){}.getType();
+        String json = storage.getObject(CUSTOMER_KEY);
+        ArrayList<Customer> customers = gson.fromJson(json, type);
+
+        if (customers == null) {
+            customers = new ArrayList<>();
+        }
+
+        CustomerListAdapter customerAdapter = new CustomerListAdapter(this.getContext(), customers);
+        ListView customerList = view.findViewById(R.id.listCustomer);
+        customerList.setAdapter(customerAdapter);
 
         customerFab.setOnClickListener(new View.OnClickListener() {
             @Override
