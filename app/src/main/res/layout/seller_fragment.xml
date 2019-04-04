@@ -3,7 +3,24 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtSellerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sellers"
+        android:textStyle="bold"
+        android:textSize="24dp"/>
+
+    <ListView
+        android:id="@+id/listSeller"
+        android:layout_below="@+id/txtSellerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+    </ListView>
 
     <com.github.clans.fab.FloatingActionButton
         android:id="@+id/seller_fab"

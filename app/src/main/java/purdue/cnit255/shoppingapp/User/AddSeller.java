@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import purdue.cnit255.shoppingapp.DataStorage;
 import purdue.cnit255.shoppingapp.Helpers.Address;
-import purdue.cnit255.shoppingapp.Helpers.Customer;
+import purdue.cnit255.shoppingapp.Helpers.Seller;
 import purdue.cnit255.shoppingapp.R;
 
 public class AddSeller extends Fragment {
@@ -34,22 +34,20 @@ public class AddSeller extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         storage = new DataStorage(getActivity().getApplicationContext());
 
-        final EditText firstNameEdText = view.findViewById(R.id.addCustomerFirstName);
-        final EditText lastNameEdText = view.findViewById(R.id.addCustomerLastName);
-        final EditText phoneNoEdText = view.findViewById(R.id.addCustomerPhoneNo);
-        final EditText emailEdText = view.findViewById(R.id.addCustomerEmail);
-        final EditText homeAddressEdText = view.findViewById(R.id.addCustomerAddress);
-        final EditText cityEdText = view.findViewById(R.id.addCustomerCity);
-        final EditText stateEdText = view.findViewById(R.id.addCustomerState);
-        final  EditText zipCodeEdText = view.findViewById(R.id.addCustomerZipCode);
-        Button btnAddSeller = view.findViewById(R.id.btnAddCustomer);
+        final EditText businessNameEdText = view.findViewById(R.id.addSellerBusinessName);
+        final EditText phoneNoEdText = view.findViewById(R.id.addSellerPhoneNo);
+        final EditText emailEdText = view.findViewById(R.id.addSellerEmail);
+        final EditText homeAddressEdText = view.findViewById(R.id.addSellerAddress);
+        final EditText cityEdText = view.findViewById(R.id.addSellerCity);
+        final EditText stateEdText = view.findViewById(R.id.addSellerState);
+        final  EditText zipCodeEdText = view.findViewById(R.id.addSellerZipCode);
+        Button btnAddSeller = view.findViewById(R.id.btnAddSeller);
 
         btnAddSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get the strings and int values of the text fields
-                String fName = firstNameEdText.getText().toString();
-                String lName = lastNameEdText.getText().toString();
+                String bName = businessNameEdText.getText().toString();
                 Long phoneNo = Long.parseLong(phoneNoEdText.getText().toString());
                 String email = emailEdText.getText().toString();
                 String homeAddr = homeAddressEdText.getText().toString();
@@ -59,15 +57,15 @@ public class AddSeller extends Fragment {
 
                 // Create instances of the address and seller
                 Address address = new Address(homeAddr, city, zipCode, state);
-                Customer seller = new Customer(fName, lName, phoneNo, email, address);
+                Seller seller = new Seller(bName, phoneNo, email, address);
 
                 // Get the type of object to retrieve
-                Type type = new TypeToken<ArrayList<Customer>>(){}.getType();
+                Type type = new TypeToken<ArrayList<Seller>>(){}.getType();
                 // Pass in the storage key
                 String json = storage.getObject(SELLER_KEY);
                 Gson gson = new Gson();
                 // Get list of sellers from json and convert to type list
-                ArrayList<Customer> sellers = gson.fromJson(json, type);
+                ArrayList<Seller> sellers = gson.fromJson(json, type);
 
                 // Init the arraylist if it does not exist
                 if (sellers == null) {
