@@ -9,4 +9,12 @@ public class Cart {
     public Cart(Customer user){
         this.user = user;
     }
+
+    public void addItem(Product product){
+        items.add(product);
+    }
+
+    public ArrayList getCart(){
+        return this.items;
+    }
 }
