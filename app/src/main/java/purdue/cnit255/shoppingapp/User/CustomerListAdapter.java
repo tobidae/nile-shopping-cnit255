@@ -35,6 +35,7 @@ public class CustomerListAdapter extends ArrayAdapter<Customer> {
         TextView txtPhoneCustomer = rowView.findViewById(R.id.txtPhoneCustomer);
         TextView txtEmailCustomer = rowView.findViewById(R.id.txtEmailCustomer);
         TextView txtAddressCustomer = rowView.findViewById(R.id.txtAddressCustomer);
+        TextView txtIDCustomer = rowView.findViewById(R.id.txtIDCustomer);
 
         Customer customer = customerList.get(position);
         Address address = customer.getAddress();
@@ -44,6 +45,7 @@ public class CustomerListAdapter extends ArrayAdapter<Customer> {
         txtEmailCustomer.setText("•• " + customer.getEmail());
         txtAddressCustomer.setText(address.getStreetAddress() + ", " + address.getCity() + " " +
                 address.getState() + " " + address.getZipCode());
+        txtIDCustomer.setText("ID: " + customer.getId());
 
         return rowView;
 

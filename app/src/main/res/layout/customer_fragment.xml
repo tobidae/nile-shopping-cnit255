@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Customers"
         android:textStyle="bold"
-        android:textSize="24dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="24dp"/>
 
     <ListView
         android:id="@+id/listCustomer"

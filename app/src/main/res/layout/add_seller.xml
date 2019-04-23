@@ -18,56 +18,49 @@
         android:padding="10dp">
 
         <EditText
-            android:id="@+id/addCustomerFirstName"
+            android:id="@+id/addSellerBusinessName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="First Name"
+            android:hint="Business Name"
             android:inputType="text" />
         <EditText
-            android:id="@+id/addCustomerLastName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Last Name"
-            android:inputType="text" />
-        <EditText
-            android:id="@+id/addCustomerPhoneNo"
+            android:id="@+id/addSellerPhoneNo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="Phone Number"
             android:inputType="phone" />
         <EditText
-            android:id="@+id/addCustomerEmail"
+            android:id="@+id/addSellerEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="Email Address"
             android:inputType="textEmailAddress" />
         <EditText
-            android:id="@+id/addCustomerAddress"
+            android:id="@+id/addSellerAddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="Home Address"
+            android:hint="Business Address"
             android:inputType="textPostalAddress" />
         <EditText
-            android:id="@+id/addCustomerCity"
+            android:id="@+id/addSellerCity"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="City"
             android:inputType="text" />
         <EditText
-            android:id="@+id/addCustomerState"
+            android:id="@+id/addSellerState"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="State"
             android:inputType="text" />
         <EditText
-            android:id="@+id/addCustomerZipCode"
+            android:id="@+id/addSellerZipCode"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"

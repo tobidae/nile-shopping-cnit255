@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtNameCustomer"
+            android:id="@+id/txtNameSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/txtPhoneCustomer"
+                android:id="@+id/txtPhoneSeller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -39,23 +39,23 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtEmailCustomer"
+                android:id="@+id/txtEmailSeller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                app:layout_constraintLeft_toRightOf="@+id/txtPhoneCustomer"
+                app:layout_constraintLeft_toRightOf="@+id/txtPhoneSeller"
                 android:text="Text me not" />
         </android.support.constraint.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txtAddressCustomer"
+            android:id="@+id/txtAddressSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="TextView" />
         <TextView
-            android:id="@+id/txtIDCustomer"
+            android:id="@+id/txtIDSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
