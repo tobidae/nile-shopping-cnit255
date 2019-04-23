@@ -4,7 +4,7 @@ public class Electronics extends Product {
 
   private int amountAvailable;
 
-     public Electronic(String itemName, String condition, String itemDescription, String manufacturer, float price,int amountAvailable) {
+     public Electronics(String itemName, String condition, String itemDescription, String manufacturer, float price,int amountAvailable) {
          super(itemName, condition, itemDescription, manufacturer, price);
          this.amountAvailable=amountAvailable;
      }

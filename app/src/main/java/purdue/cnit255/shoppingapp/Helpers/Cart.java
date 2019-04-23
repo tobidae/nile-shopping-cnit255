@@ -10,11 +10,19 @@ public class Cart {
         this.user = user;
     }
 
-    public void addItem(Product product){
-        items.add(product);
+    public void addItem(Product item){
+        items.add(item);
     }
 
     public ArrayList getCart(){
         return this.items;
+    }
+
+    public double getTotal(){
+        double total = 0;
+        for (int i = 0; i < items.size(); i++){
+            total += items.get(i).getPrice();
+        }
+        return total;
     }
 }

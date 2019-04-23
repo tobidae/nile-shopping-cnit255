@@ -9,10 +9,10 @@ public class Product {
      private float price;
 
      public Product(String itemName,String condition,String itemDescription, String manufacturer, float price){
-         this.itemName=itemName;
-         this.condition=condition;
-         this.itemDescription=itemDescription;
-         this.manufacturer=manufacturer;
+         this.itemName = itemName;
+         this.condition = condition;
+         this.itemDescription = itemDescription;
+         this.manufacturer = manufacturer;
          this.price=price;
 
      }
