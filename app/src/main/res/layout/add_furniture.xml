@@ -39,14 +39,12 @@
             <RadioButton android:id="@+id/radioFurnitureNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New"
-                android:onClick="onFurnitureConditionClicked"/>
+                android:text="New"/>
 
             <RadioButton android:id="@+id/radioFurnitureUsed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Used"
-                android:onClick="onFurnitureConditionClicked"/>
+                android:text="Used"/>
         </RadioGroup>
         <TextView
             android:layout_width="match_parent"

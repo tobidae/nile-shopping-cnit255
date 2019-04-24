@@ -72,7 +72,6 @@ public class AddCustomer extends Fragment {
                 String json = storage.getObject(CUSTOMER_KEY);
                 // Get list of customers from json and convert to type list
                 ArrayList<Customer> customers = gson.fromJson(json, type);
-                Toast.makeText(getActivity(), json, Toast.LENGTH_LONG).show();
 
                 // Init the arraylist if it does not exist
                 if (customers == null) {

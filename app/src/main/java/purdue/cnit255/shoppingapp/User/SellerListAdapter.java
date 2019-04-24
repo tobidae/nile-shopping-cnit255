@@ -39,9 +39,9 @@ public class SellerListAdapter extends ArrayAdapter<Seller> {
         Address address = seller.getAddress();
 
         txtNameSeller.setText(seller.getBusinessName());
-        txtPhoneSeller.setText(String.valueOf(seller.getPhoneNumber()));
-        txtEmailSeller.setText("•• " + seller.getEmail());
-        txtAddressSeller.setText(address.getStreetAddress() + ", " + address.getCity() + " " +
+        txtPhoneSeller.setText("Phone: " + String.valueOf(seller.getPhoneNumber()));
+        txtEmailSeller.setText("•• Email: " + seller.getEmail());
+        txtAddressSeller.setText("Address" + address.getStreetAddress() + ", " + address.getCity() + " " +
                 address.getState() + " " + address.getZipCode());
         txtIDSeller.setText("ID: " + seller.getId());
 

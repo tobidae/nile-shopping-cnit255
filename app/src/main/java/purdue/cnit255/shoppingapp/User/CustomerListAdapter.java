@@ -41,13 +41,12 @@ public class CustomerListAdapter extends ArrayAdapter<Customer> {
         Address address = customer.getAddress();
 
         txtNameCustomer.setText(customer.getFirstName() + " " + customer.getLastName());
-        txtPhoneCustomer.setText(String.valueOf(customer.getPhoneNumber()));
-        txtEmailCustomer.setText("•• " + customer.getEmail());
-        txtAddressCustomer.setText(address.getStreetAddress() + ", " + address.getCity() + " " +
+        txtPhoneCustomer.setText("Phone: " + String.valueOf(customer.getPhoneNumber()));
+        txtEmailCustomer.setText("•• Email: " + customer.getEmail());
+        txtAddressCustomer.setText("Address: " + address.getStreetAddress() + ", " + address.getCity() + " " +
                 address.getState() + " " + address.getZipCode());
         txtIDCustomer.setText("ID: " + customer.getId());
 
         return rowView;
-
-    };
+    }
 }
