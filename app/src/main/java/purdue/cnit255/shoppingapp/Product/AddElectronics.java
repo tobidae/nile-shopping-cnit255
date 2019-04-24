@@ -129,7 +129,7 @@ public class AddElectronics extends Fragment implements AdapterView.OnItemSelect
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
-        switch(view.getId()) {
+        switch(parent.getId()) {
             case R.id.addElectronicsManufacturer:
                 Toast.makeText(getActivity().getApplicationContext(),
                         (String) parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();

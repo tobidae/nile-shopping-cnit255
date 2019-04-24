@@ -33,6 +33,7 @@ public class ElectronicsListAdapter extends ArrayAdapter<Electronics> {
         TextView txtElectronicsType = rowView.findViewById(R.id.txtElectronicsType);
         TextView txtConditionElectronics = rowView.findViewById(R.id.txtConditionElectronics);
         TextView txtQuantityElectronics = rowView.findViewById(R.id.txtQuantityElectronics);
+        TextView txtPriceElectronics = rowView.findViewById(R.id.txtPriceElectronics);
 
         Electronics electronics = electronicsList.get(position);
 
@@ -41,6 +42,7 @@ public class ElectronicsListAdapter extends ArrayAdapter<Electronics> {
         txtElectronicsType.setText(electronics.getElectronicsType());
         txtConditionElectronics.setText("•• " + electronics.getCondition());
         txtQuantityElectronics.setText("Quantity: " + String.valueOf(electronics.getAmountAvailable()));
+        txtPriceElectronics.setText("Price: $" + String.valueOf(electronics.getPrice()));
 
         return rowView;
 
