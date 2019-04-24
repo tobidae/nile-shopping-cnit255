@@ -41,7 +41,7 @@ public class SellerListAdapter extends ArrayAdapter<Seller> {
         txtNameSeller.setText(seller.getBusinessName());
         txtPhoneSeller.setText("Phone: " + String.valueOf(seller.getPhoneNumber()));
         txtEmailSeller.setText("•• Email: " + seller.getEmail());
-        txtAddressSeller.setText("Address" + address.getStreetAddress() + ", " + address.getCity() + " " +
+        txtAddressSeller.setText("Address: " + address.getStreetAddress() + ", " + address.getCity() + " " +
                 address.getState() + " " + address.getZipCode());
         txtIDSeller.setText("ID: " + seller.getId());
 
