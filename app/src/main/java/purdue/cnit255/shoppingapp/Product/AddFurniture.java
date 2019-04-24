@@ -6,9 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -22,12 +25,17 @@ import purdue.cnit255.shoppingapp.DataStorage;
 import purdue.cnit255.shoppingapp.Helpers.Address;
 import purdue.cnit255.shoppingapp.Helpers.Customer;
 import purdue.cnit255.shoppingapp.Helpers.Furniture;
+import purdue.cnit255.shoppingapp.Helpers.Seller;
 import purdue.cnit255.shoppingapp.R;
 
 public class AddFurniture extends Fragment {
     DataStorage storage;
     String FURNITURE_KEY = "furniture";
     String productCondition = "";
+    String SELLER_KEY = "sellers";
+    String manufacturer = "";
+    String productType = "";
+
 
     @Nullable
     @Override
@@ -40,17 +48,66 @@ public class AddFurniture extends Fragment {
         storage = new DataStorage(getActivity().getApplicationContext());
 
         final EditText nameEdText = view.findViewById(R.id.addFurnitureName);
-        final EditText manufacturerEdText = view.findViewById(R.id.addFurnitureManufacturer);
+        final Spinner manufacturerSpinner = view.findViewById(R.id.addFurnitureManufacturer);
+        final Spinner typeSpinner = view.findViewById(R.id.addFurnitureType);
+        final RadioButton radioBtnNew = view.findViewById(R.id.radioFurnitureNew);
+        final RadioButton radioBtnUsed = view.findViewById(R.id.radioFurnitureUsed);
         final EditText priceEdText = view.findViewById(R.id.addFurniturePrice);
         final EditText quantityEdText = view.findViewById(R.id.addFurnitureQuantity);
         Button btnAddFurniture = view.findViewById(R.id.btnAddFurniture);
+
+
+
+       // final EditText manufacturerEdText = view.findViewById(R.id.addFurnitureManufacturer);
+       // final EditText priceEdText = view.findViewById(R.id.addFurniturePrice);
+        //final EditText quantityEdText = view.findViewById(R.id.addFurnitureQuantity);
+      //  Button btnAddFurniture = view.findViewById(R.id.btnAddFurniture);
+
+        final Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<Seller>>(){}.getType();
+        String json = storage.getObject(SELLER_KEY);
+        ArrayList<Seller> sellers = gson.fromJson(json, type);
+        if (sellers == null) {
+            sellers = new ArrayList<>();
+        }
+        String[] sellerNames = new String[sellers.size()];
+
+        for (int i = 0; i < sellers.size(); i++) {
+            sellerNames[i] = sellers.get(i).getBusinessName();
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+                android.R.layout.simple_spinner_dropdown_item, sellerNames);
+        manufacturerSpinner.setAdapter(adapter);
+        manufacturerSpinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
+                R.array.electronics_type, android.R.layout.simple_spinner_dropdown_item); //needs switched to furniture type
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeSpinner.setAdapter(typeAdapter);
+        typeSpinner.setOnItemSelectedListener(this);
+
+        radioBtnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productCondition = "New";
+            }
+        });
+        radioBtnUsed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productCondition = "Used";
+            }
+        });
+
+
 
         btnAddFurniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Get the strings and int values of the text fields
                 String name = nameEdText.getText().toString();
-                String manufacturer = manufacturerEdText.getText().toString();
+               // String manufacturer = manufacturerEdText.getText().toString();
                 int price = Integer.parseInt(priceEdText.getText().toString());
                 Integer quantity = Integer.parseInt(quantityEdText.getText().toString());
 
@@ -58,13 +115,13 @@ public class AddFurniture extends Fragment {
                 Furniture furniture = new Furniture(name, productCondition, manufacturer, price, quantity, "");
 
                 // Get the type of object to retrieve
-                Gson gson = new Gson();
+                //Gson gson = new Gson();
                 Type type = new TypeToken<List<Customer>>(){}.getType();
                 // Pass in the storage key
                 String json = storage.getObject(FURNITURE_KEY);
                 // Get list of furnitures from json and convert to type list
                 ArrayList<Furniture> furnitures = gson.fromJson(json, type);
-                Toast.makeText(getActivity(), json, Toast.LENGTH_LONG).show();
+               // Toast.makeText(getActivity(), json, Toast.LENGTH_LONG).show();
 
                 // Init the arraylist if it does not exist
                 if (furnitures == null) {
@@ -81,6 +138,26 @@ public class AddFurniture extends Fragment {
         });
 
     }
+
+
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        switch(parent.getId()) {
+            case R.id.addFurnitureManufacturer:
+                Toast.makeText(getActivity().getApplicationContext(),
+                        (String) parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+                manufacturer = (String) parent.getItemAtPosition(pos);
+                break;
+            case R.id.addFurnitueType:
+                Toast.makeText(getActivity().getApplicationContext(),
+                        (String) parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+                productType = (String) parent.getItemAtPosition(pos);
+                break;
+        }
+    }
+
+
 
     public void onFurnitureConditionClicked(View view) {
         // Is the button now checked?
