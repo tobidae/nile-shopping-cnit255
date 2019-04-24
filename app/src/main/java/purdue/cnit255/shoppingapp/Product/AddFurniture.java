@@ -98,12 +98,11 @@ public class AddFurniture extends Fragment implements AdapterView.OnItemSelected
             public void onClick(View v) {
                 // Get the strings and int values of the text fields
                 String name = nameEdText.getText().toString();
-               // String manufacturer = manufacturerEdText.getText().toString();
                 int price = Integer.parseInt(priceEdText.getText().toString());
                 Integer quantity = Integer.parseInt(quantityEdText.getText().toString());
 
                 // Create instances of the address and customer
-                Furniture furniture = new Furniture(name, productCondition, manufacturer, price, quantity, "");
+                Furniture furniture = new Furniture(name, productCondition, manufacturer, price, quantity, productType);
 
                 // Get the type of object to retrieve
                 //Gson gson = new Gson();
@@ -112,7 +111,6 @@ public class AddFurniture extends Fragment implements AdapterView.OnItemSelected
                 String json = storage.getObject(FURNITURE_KEY);
                 // Get list of furnitures from json and convert to type list
                 ArrayList<Furniture> furnitures = gson.fromJson(json, type);
-               // Toast.makeText(getActivity(), json, Toast.LENGTH_LONG).show();
 
                 // Init the arraylist if it does not exist
                 if (furnitures == null) {
