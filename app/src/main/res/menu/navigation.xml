@@ -2,9 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_product"
+        android:id="@+id/navigation_electronics"
         android:icon="@drawable/ic_product"
-        android:title="@string/title_product" />
+        android:title="@string/title_electronics" />
+    <item
+        android:id="@+id/navigation_furniture"
+        android:icon="@drawable/ic_product"
+        android:title="@string/title_furniture" />
 
     <item
         android:id="@+id/navigation_customer"

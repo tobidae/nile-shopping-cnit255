@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import purdue.cnit255.shoppingapp.Product.ElectronicsFragment;
+import purdue.cnit255.shoppingapp.Product.FurnitureFragment;
 import purdue.cnit255.shoppingapp.User.CustomerFragment;
 import purdue.cnit255.shoppingapp.User.SellerFragment;
 
@@ -21,8 +23,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_product:
-                    pushFragment(new ProductFragment());
+                case R.id.navigation_electronics:
+                    pushFragment(new ElectronicsFragment());
+                    return true;
+                case R.id.navigation_furniture:
+                    pushFragment(new FurnitureFragment());
                     return true;
                 case R.id.navigation_customer:
                     pushFragment(new CustomerFragment());
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Select first menu item by default and show Fragment accordingly.
         Menu menu = navigation.getMenu();
-        pushFragment(new ProductFragment());
+        pushFragment(new ElectronicsFragment());
 
     }
 

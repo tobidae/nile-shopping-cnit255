@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Shopping App</string>
-    <string name="title_product">Product List</string>
+    <string name="title_electronics">Electronics</string>
+    <string name="title_furniture">Furniture</string>
     <string name="title_customers">Customers</string>
     <string name="title_sellers">Sellers</string>
     <string name="title_cart">Cart List</string>
+
+    <string-array name="electronics_type">
+        <item>Phones</item>
+        <item>Laptops</item>
+        <item>TV</item>
+        <item>Audio</item>
+    </string-array>
 </resources>

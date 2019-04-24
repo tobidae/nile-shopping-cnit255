@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Furniture"
+        android:textSize="24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/addFurnitureName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Furniture Name"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furniture Condition"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton android:id="@+id/radioFurnitureNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New"
+                android:onClick="onFurnitureConditionClicked"/>
+
+            <RadioButton android:id="@+id/radioFurnitureUsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Used"
+                android:onClick="onFurnitureConditionClicked"/>
+        </RadioGroup>
+        <EditText
+            android:id="@+id/addFurnitureManufacturer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Manufacturer"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/addFurniturePrice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Price ($$$)"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/addFurnitureQuantity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Quantity"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnAddFurniture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Furniture"/>
+    </LinearLayout>
+</LinearLayout>

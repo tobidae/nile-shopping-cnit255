@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ import purdue.cnit255.shoppingapp.R;
 public class SellerFragment extends Fragment {
     DataStorage storage;
     String SELLER_KEY = "sellers";
+    ArrayList<Seller> sellers;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         return inflater.inflate(R.layout.seller_fragment, viewGroup, false);
@@ -38,13 +41,13 @@ public class SellerFragment extends Fragment {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<Seller>>(){}.getType();
         String json = storage.getObject(SELLER_KEY);
-        ArrayList<Seller> sellers = gson.fromJson(json, type);
+        sellers = gson.fromJson(json, type);
 
         if (sellers == null) {
             sellers = new ArrayList<>();
         }
 
-        SellerListAdapter sellerAdapter = new SellerListAdapter(this.getContext(), sellers);
+        final SellerListAdapter sellerAdapter = new SellerListAdapter(this.getContext(), sellers);
         ListView sellerList = view.findViewById(R.id.listSeller);
         sellerList.setAdapter(sellerAdapter);
         
@@ -57,6 +60,19 @@ public class SellerFragment extends Fragment {
                 fTransaction.replace(R.id.rootLayout, addSellerFrag);
                 fTransaction.addToBackStack(null);
                 fTransaction.commit();
+            }
+        });
+
+        sellerList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                sellers.remove(pos);
+                storage.setObject(SELLER_KEY, sellers);
+                sellerAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Deleted a seller at index " + sellerAdapter, Toast.LENGTH_LONG).show();
+                return false;
             }
         });
     }

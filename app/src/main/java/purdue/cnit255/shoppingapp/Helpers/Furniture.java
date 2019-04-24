@@ -3,15 +3,16 @@ package purdue.cnit255.shoppingapp.Helpers;
 public class Furniture extends Product {
 
     private int quantityAvailable;
+    private String furnitureType;
 
-    public Furniture(String itemName, String condition, String itemDescription, String manufacturer, float price,int quantityAvailable) {
-        super(itemName, condition, itemDescription, manufacturer, price);
+    public Furniture(String itemName, String condition, String manufacturer, int price,int quantityAvailable, String furnitureType) {
+        super(itemName, condition, manufacturer, price);
         this.quantityAvailable=quantityAvailable;
+        this.furnitureType = furnitureType;
     }
 
-
     @Override
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         super.setPrice(price);
     }
 
@@ -23,11 +24,6 @@ public class Furniture extends Product {
     @Override
     public void setItemName(String itemName) {
         super.setItemName(itemName);
-    }
-
-    @Override
-    public void setItemDescription(String itemDescription) {
-        super.setItemDescription(itemDescription);
     }
 
     @Override
@@ -46,13 +42,8 @@ public class Furniture extends Product {
     }
 
     @Override
-    public float getPrice() {
+    public int getPrice() {
         return super.getPrice();
-    }
-
-    @Override
-    public String getItemDescription() {
-        return super.getItemDescription();
     }
 
     @Override
@@ -68,4 +59,11 @@ public class Furniture extends Product {
         return quantityAvailable;
     }
 
+    public String getFurnitureType() {
+        return furnitureType;
+    }
+
+    public void setFurnitureType(String furnitureType) {
+        this.furnitureType = furnitureType;
+    }
 }
