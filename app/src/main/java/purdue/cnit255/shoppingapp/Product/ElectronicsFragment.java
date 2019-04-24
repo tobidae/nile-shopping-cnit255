@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ import purdue.cnit255.shoppingapp.R;
 public class ElectronicsFragment extends Fragment {
     DataStorage storage;
     String ELECTRONICS_KEY = "electronics";
+    ArrayList<Electronics> electronics;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         return inflater.inflate(R.layout.electronics_fragment, viewGroup, false);
@@ -38,13 +41,13 @@ public class ElectronicsFragment extends Fragment {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<Electronics>>(){}.getType();
         String json = storage.getObject(ELECTRONICS_KEY);
-        ArrayList<Electronics> electronics = gson.fromJson(json, type);
+        electronics = gson.fromJson(json, type);
 
         if (electronics == null) {
             electronics = new ArrayList<>();
         }
 
-        ElectronicsListAdapter electronicsAdapter = new ElectronicsListAdapter(this.getContext(), electronics);
+        final ElectronicsListAdapter electronicsAdapter = new ElectronicsListAdapter(this.getContext(), electronics);
         ListView electronicsList = view.findViewById(R.id.listElectronics);
         electronicsList.setAdapter(electronicsAdapter);
 
@@ -57,6 +60,19 @@ public class ElectronicsFragment extends Fragment {
                 fTransaction.replace(R.id.rootLayout, addElectronicsFrag);
                 fTransaction.addToBackStack(null);
                 fTransaction.commit();
+            }
+        });
+
+        electronicsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                electronics.remove(pos);
+                storage.setObject(ELECTRONICS_KEY, electronics);
+                electronicsAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Deleted a Electronic at index " + pos, Toast.LENGTH_LONG).show();
+                return false;
             }
         });
     }

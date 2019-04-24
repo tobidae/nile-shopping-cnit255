@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ import purdue.cnit255.shoppingapp.R;
 public class FurnitureFragment extends Fragment {
     DataStorage storage;
     String FURNITURE_KEY = "furniture";
+    ArrayList<Furniture> furniture;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         return inflater.inflate(R.layout.furniture_fragment, viewGroup, false);
@@ -38,13 +41,13 @@ public class FurnitureFragment extends Fragment {
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<Furniture>>(){}.getType();
         String json = storage.getObject(FURNITURE_KEY);
-        ArrayList<Furniture> furniture = gson.fromJson(json, type);
+        furniture = gson.fromJson(json, type);
 
         if (furniture == null) {
             furniture = new ArrayList<>();
         }
 
-        FurnitureListAdapter furnitureAdapter = new FurnitureListAdapter(this.getContext(), furniture);
+        final FurnitureListAdapter furnitureAdapter = new FurnitureListAdapter(this.getContext(), furniture);
         ListView furnitureList = view.findViewById(R.id.listFurniture);
         furnitureList.setAdapter(furnitureAdapter);
         
@@ -57,6 +60,19 @@ public class FurnitureFragment extends Fragment {
                 fTransaction.replace(R.id.rootLayout, addFurnitureFrag);
                 fTransaction.addToBackStack(null);
                 fTransaction.commit();
+            }
+        });
+
+        furnitureList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                furniture.remove(pos);
+                storage.setObject(FURNITURE_KEY, furniture);
+                furnitureAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Deleted a furniture at index " + pos, Toast.LENGTH_LONG).show();
+                return false;
             }
         });
     }

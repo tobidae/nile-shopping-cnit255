@@ -40,7 +40,7 @@ public class AddSeller extends Fragment {
         final EditText homeAddressEdText = view.findViewById(R.id.addSellerAddress);
         final EditText cityEdText = view.findViewById(R.id.addSellerCity);
         final EditText stateEdText = view.findViewById(R.id.addSellerState);
-        final  EditText zipCodeEdText = view.findViewById(R.id.addSellerZipCode);
+        final EditText zipCodeEdText = view.findViewById(R.id.addSellerZipCode);
         Button btnAddSeller = view.findViewById(R.id.btnAddSeller);
 
         btnAddSeller.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +80,5 @@ public class AddSeller extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
-
     }
 }
