@@ -106,7 +106,7 @@ public class AddFurniture extends Fragment implements AdapterView.OnItemSelected
 
                 // Get the type of object to retrieve
                 //Gson gson = new Gson();
-                Type type = new TypeToken<List<Customer>>(){}.getType();
+                Type type = new TypeToken<List<Furniture>>(){}.getType();
                 // Pass in the storage key
                 String json = storage.getObject(FURNITURE_KEY);
                 // Get list of furnitures from json and convert to type list
