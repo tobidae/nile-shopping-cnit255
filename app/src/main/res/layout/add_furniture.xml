@@ -48,13 +48,26 @@
                 android:text="Used"
                 android:onClick="onFurnitureConditionClicked"/>
         </RadioGroup>
-        <EditText
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furniture Manufacturer"
+            android:textSize="18dp" />
+        <Spinner
             android:id="@+id/addFurnitureManufacturer"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Manufacturer"
-            android:inputType="text" />
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furniture Type"
+            android:textSize="18dp" />
+        <Spinner
+            android:id="@+id/addFurnitureType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" />
         <EditText
             android:id="@+id/addFurniturePrice"
             android:layout_width="fill_parent"

@@ -12,4 +12,10 @@
         <item>TV</item>
         <item>Audio</item>
     </string-array>
+    <string-array name="furniture_type">
+        <item>Bedroom</item>
+        <item>Living Room</item>
+        <item>Office</item>
+        <item>Bathroom</item>
+    </string-array>
 </resources>

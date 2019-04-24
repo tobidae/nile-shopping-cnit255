@@ -28,7 +28,7 @@ import purdue.cnit255.shoppingapp.Helpers.Furniture;
 import purdue.cnit255.shoppingapp.Helpers.Seller;
 import purdue.cnit255.shoppingapp.R;
 
-public class AddFurniture extends Fragment {
+public class AddFurniture extends Fragment implements AdapterView.OnItemSelectedListener {
     DataStorage storage;
     String FURNITURE_KEY = "furniture";
     String productCondition = "";
@@ -56,13 +56,6 @@ public class AddFurniture extends Fragment {
         final EditText quantityEdText = view.findViewById(R.id.addFurnitureQuantity);
         Button btnAddFurniture = view.findViewById(R.id.btnAddFurniture);
 
-
-
-       // final EditText manufacturerEdText = view.findViewById(R.id.addFurnitureManufacturer);
-       // final EditText priceEdText = view.findViewById(R.id.addFurniturePrice);
-        //final EditText quantityEdText = view.findViewById(R.id.addFurnitureQuantity);
-      //  Button btnAddFurniture = view.findViewById(R.id.btnAddFurniture);
-
         final Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<Seller>>(){}.getType();
         String json = storage.getObject(SELLER_KEY);
@@ -82,7 +75,7 @@ public class AddFurniture extends Fragment {
         manufacturerSpinner.setOnItemSelectedListener(this);
 
         ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity().getApplicationContext(),
-                R.array.electronics_type, android.R.layout.simple_spinner_dropdown_item); //needs switched to furniture type
+                R.array.furniture_type, android.R.layout.simple_spinner_dropdown_item); //needs switched to furniture type
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(typeAdapter);
         typeSpinner.setOnItemSelectedListener(this);
@@ -99,8 +92,6 @@ public class AddFurniture extends Fragment {
                 productCondition = "Used";
             }
         });
-
-
 
         btnAddFurniture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,43 +127,21 @@ public class AddFurniture extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
-
     }
-
-
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         switch(parent.getId()) {
             case R.id.addFurnitureManufacturer:
-                Toast.makeText(getActivity().getApplicationContext(),
-                        (String) parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
                 manufacturer = (String) parent.getItemAtPosition(pos);
                 break;
-            case R.id.addFurnitueType:
-                Toast.makeText(getActivity().getApplicationContext(),
-                        (String) parent.getItemAtPosition(pos), Toast.LENGTH_LONG).show();
+            case R.id.addFurnitureType:
                 productType = (String) parent.getItemAtPosition(pos);
                 break;
         }
     }
 
-
-
-    public void onFurnitureConditionClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radioFurnitureNew:
-                if (checked)
-                    productCondition = "New";
-                    break;
-            case R.id.radioFurnitureUsed:
-                if (checked)
-                    productCondition = "Used";
-                    break;
-        }
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 }
